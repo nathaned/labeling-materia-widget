@@ -153,7 +153,7 @@ Namespace('Labeling').Engine = do ->
 			_g('termlist').appendChild term
 
 		if _fakeoutCount
-			$('#fakeoutCount').html("There are " + _fakeoutCount + " extra terms.")
+			document.getElementById("fakeoutCount").innerHTML = "There are " + _fakeoutCount + " extra terms."
 
 		# defer such that it is run once the labels are ready in the DOM
 		setTimeout ->
@@ -268,7 +268,7 @@ Namespace('Labeling').Engine = do ->
 			_curPage--
 			_arrangeList()
 		else
-			termsLeft = $('div[id^="term_"].term:not(.placed)').length
+			termsLeft = document.querySelectorAll('#termlist .term:not(.placed)').length
 			# no more terms, we're done!
 			if termsLeft <= _fakeoutCount
 				_g('donearrow').style.opacity = '1'
@@ -531,7 +531,7 @@ Namespace('Labeling').Engine = do ->
 		_g('backgroundcover').classList.remove 'show'
 		_g('previewbox').classList.remove 'show'
 
-	# submit questions to Materia. Ask first if they aren't done$
+	# submit questions to Materia. Ask first if they aren't done
 	_submitAnswers = ->
 		if not _isPuzzleComplete
 			_showAlert()
